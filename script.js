@@ -1,4 +1,4 @@
-// Ensure script runs only after the DOM is fully loaded
+// Ensure the script runs after the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Select DOM elements
     const addButton = document.getElementById('add-task-btn');
@@ -21,38 +21,45 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create a remove button for the task
         const removeBtn = document.createElement('button');
         removeBtn.textContent = 'Remove'; // Set button text
-        removeBtn.style.cursor = 'pointer'; // Apply inline styling
-        removeBtn.style.backgroundColor = '#ff6347';
-        removeBtn.style.color = 'white';
-        removeBtn.style.border = 'none';
-        removeBtn.style.borderRadius = '4px';
-        removeBtn.style.padding = '5px 10px';
-        removeBtn.style.marginLeft = '10px';
-
-        // Add hover effect using JavaScript
-        removeBtn.onmouseover = () => {
-            removeBtn.style.backgroundColor = '#d9534f';
-        };
-        removeBtn.onmouseout = () => {
-            removeBtn.style.backgroundColor = '#ff6347';
-        };
 
         // Assign an event listener to remove the task when clicked
-        removeBtn.onclick = () => taskList.removeChild(li);
+        removeBtn.onclick = function () {
+            taskList.removeChild(li); // Remove the task from the list
+        };
+
+        // Set styles directly for the <li> and button elements
+        Object.assign(li.style, {
+            backgroundColor: '#eeeeee',
+            marginTop: '8px',
+            padding: '10px',
+            borderRadius: '4px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+        });
+
+        Object.assign(removeBtn.style, {
+            cursor: 'pointer',
+            backgroundColor: '#ff6347',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            padding: '5px 10px',
+            marginLeft: '10px'
+        });
+
+        // Add hover effect using JavaScript
+        removeBtn.onmouseover = function () {
+            removeBtn.style.backgroundColor = '#d9534f';
+        };
+        removeBtn.onmouseout = function () {
+            removeBtn.style.backgroundColor = '#ff6347';
+        };
 
         // Append the remove button to the task <li> element
         li.appendChild(removeBtn);
 
-        // Add inline styling to the <li> element
-        li.style.backgroundColor = '#eeeeee';
-        li.style.marginTop = '8px';
-        li.style.padding = '10px';
-        li.style.borderRadius = '4px';
-        li.style.display = 'flex';
-        li.style.justifyContent = 'space-between';
-        li.style.alignItems = 'center';
-
-        // Add the task to the list
+        // Add the task to the task list
         taskList.appendChild(li);
 
         // Clear the input field
