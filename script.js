@@ -18,10 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const li = document.createElement('li');
         li.textContent = taskText; // Set task text
 
+        // Apply styles directly (alternative to using classList)
+        li.style.backgroundColor = '#eeeeee';
+        li.style.marginTop = '8px';
+        li.style.padding = '10px';
+        li.style.borderRadius = '4px';
+        li.style.display = 'flex';
+        li.style.justifyContent = 'space-between';
+        li.style.alignItems = 'center';
+
         // Create a remove button for the task
         const removeBtn = document.createElement('button');
         removeBtn.textContent = 'Remove'; // Button text
-        removeBtn.className = 'remove-btn'; // Assign class
+        removeBtn.className = 'remove-btn'; // Assign class using className
 
         // Assign click event to remove the task when button is clicked
         removeBtn.onclick = () => taskList.removeChild(li);
